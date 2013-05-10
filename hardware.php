@@ -3,23 +3,112 @@
 Template Name: Hardware
  */
 
-get_header(); ?>
+get_header();
 
-<?php if ( have_posts() ) while ( have_posts() ) : the_post(); ?>
+if ( have_posts() ) while ( have_posts() ) : the_post();
 
-					<?php if ( is_front_page() ) { ?>
-						<h2><?php the_title(); ?></h2>
-					<?php } else { ?>	
-						<h1><?php the_title(); ?></h1>
-					<?php } ?>				
+$paginaMadre = $post->post_parent;
 
-						<?php the_content(); ?>
-						<?php wp_link_pages( array( 'before' => '' . __( 'Pages:', 'twentyten' ), 'after' => '' ) ); ?>
-						<?php edit_post_link( __( 'Edit', 'twentyten' ), '', '' ); ?>
+$slugMadre = get_post($paginaMadre)->post_name;
+$tituloMadre = get_post($paginaMadre)->post_title;
+// $imagenMadre = featImg("medium",$paginaMadre);		
+// $imagenMadre = makeImg(timThumb($imagenMadre,350,100));
+// $linkMadre = get_permalink();	
 
-				<?php comments_template( '', true ); ?>
+ 	
+$args = array(
+	'post_type' => 'proyecto',
+	'name' => $slugMadre
+);
 
-<?php endwhile; ?>
+$proyecto = new WP_Query($args);
 
-<?php get_sidebar(); ?>
-<?php get_footer(); ?>
+while ( $proyecto->have_posts() ) :
+	$proyecto->the_post();
+	$tituloMadre = makeDiv("","titulo",filter( get_the_title(), 'title' ));
+	$imagenMadre = featImg();		
+	$imagenMadre = makeImg(timThumb($imagenMadre,350,100));
+	$linkMadre = get_permalink();	
+
+	$madre = makeDiv("","madre",$imagenMadre.$tituloMadre,$linkMadre);
+
+endwhile;	
+
+// $madre = makeDiv("","madre",$imagenMadre.$tituloMadre,$linkMadre);
+
+
+	$subPaginas = get_pages( array ( 'parent' => $paginaMadre, 'child_of' => $paginaMadre ) );
+
+	foreach ( $subPaginas as $subPagina ) {
+		$subTitulo = $subPagina->post_title;
+		if($subTitulo==$post->post_title){ $current = ' current-menu-item'; } 
+		else{ $current = ''; } 
+		$subLink = get_permalink( $subPagina->ID );
+		
+		$menu .= makeDiv( "", "menudiv".$current, makeTextDiv($subTitulo,$subLink) );
+	}
+
+
+endwhile;
+
+
+
+
+$args = array(
+	'post_type' => 'hardware', 'posts_per_page' => -1,
+	'tax_query' => array(
+		array(
+			'taxonomy' => 'proyectos',
+			'field' => 'slug',			
+			'terms' => $slugMadre
+		)
+	)
+);
+
+
+
+$query = new WP_Query($args);
+
+while ($query->have_posts()) : $query->the_post(); 	
+	$titulo = filter( get_the_title(), 'title' );
+	$extracto = filter( get_the_excerpt(), 'excerpt' );
+	$imagen = featImg('medium');
+	$imagen = makeImg(timThumb($imagen,200,200 ));	
+	$link = get_permalink($post->ID);
+	$hardware .= makeDiv("","entrada",
+		makeDiv("","titulo",$titulo,$link)
+		.
+		makeDiv("","img ".$clase,$imagen,$link)
+		.
+		makeDiv("","extracto",$extracto,$link)
+	);
+
+endwhile;
+
+
+
+
+ 	
+
+ 	
+
+
+ 	// $menu = makeDiv("","submenu",$menu);
+
+ 	$imagen = get_images($post->ID,'full');//[0];
+
+ 	$imagen = makeImg($imagen[0][0]);
+
+
+ 	$lateral = makeDiv("","lateral fourcol",$madre.$menu);
+ 	$hardware = makeDiv("","eightcol last",$hardware);
+
+ 	$echo .= makeDiv("","header twelvecol row",$lateral.$hardware); 
+
+ 	echo makeDiv("hardware","posts",$echo);
+
+
+get_sidebar();
+get_footer();
+
+?>

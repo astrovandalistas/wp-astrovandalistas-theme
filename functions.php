@@ -1,5 +1,7 @@
 <?php 
 
+add_theme_support( 'post-thumbnails' );
+
 // global $user_ID;
 
 // $titulos = array(
@@ -195,7 +197,10 @@ class MV_Cleaner_Walker_Nav_Menu extends Walker {
 // }
 
 function featImg( $size = 'full', $id = "" ){
-  $img = wp_get_attachment_image_src( get_post_thumbnail_id(), $size);
+  if($id != "")
+    $img = wp_get_attachment_image_src( get_post_thumbnail_id($id), $size);
+  else
+    $img = wp_get_attachment_image_src( get_post_thumbnail_id(), $size);
   return $img[0];
 }
 

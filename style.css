@@ -164,9 +164,13 @@ border-radius: 5px;
 	/*text-transform: uppercase;*/
 	line-height: 25px;
 	background-color: #fff;
-	color:#000;
 	padding: 0 1.25%;
 	width: 87.5%;
+}
+
+.titulo, 
+.titulo a { 
+	color:#000;
 }
 
 
@@ -240,15 +244,6 @@ border-radius: 5px;
 #proyectos .proyecto img { width:100%; height:auto; }
 
 
-#proyecto .header {
-	padding-bottom: 20px; 
-	border-bottom: 1px solid #334;
-}
-
-#proyecto .contenido {
-	padding: 20px 0; 	
-}
-
 
 #proyectos .proyecto .uno { height: 150px;}
 #proyectos .proyecto .dos { height: 300px;}
@@ -261,19 +256,20 @@ border-radius: 5px;
 /* proyecto */
 
 
+
+.post  .header {
+	padding-bottom: 20px; 
+	border-bottom: 1px solid #334;
+}
+
+.post .contenido {
+	padding: 20px 0; 	
+}
 #proyecto .lateral
 
 
 
 /* BITACORA */
-
-#bitacora {
-
-}
-
-#bitacora .entrada {
-	
-}
 
 #bitacora .entrada img {
 	width: 100%;
@@ -287,10 +283,56 @@ border-radius: 5px;
 #codigo .contenido { }
 
 
-#codigo .bloque {
+#twitter,
+.posts .entrada,
+#codigo .bloque,
+.eventos .evento {
 	margin: 20px 0;
 	font-size: 14px;	
+	background-color: #111;
+	border: 1px solid #334;
+	padding:20px;
+	border-radius: 10px;
 }
+
+
+.posts .entrada {
+	position: relative;
+}
+.posts .entrada .titulo {
+	font-size: 30px;
+	position: absolute;
+	width: auto;
+	margin: 0;
+	top: 0;
+	left: 0;
+}
+.posts .entrada .extracto {
+	padding: 0 15px;
+	font-size: 15px;
+}
+.posts .entrada .extracto a {
+	color: #fff;
+}
+
+.posts .entrada > div { display: inline-block; float left: }
+
+.posts .entrada img { width: 100%; }
+
+
+#hardware .entrada .img,
+#software .entrada .img {
+	width: 30%;
+}
+#hardware .entrada .extracto,
+#software .entrada .extracto {
+	width: 60%;
+}
+
+
+
+
+
 #codigo .bloque_codigo > div > div {
     display: inline-block;
     left: 0;
@@ -308,3 +350,58 @@ border-radius: 5px;
 .syntaxhighlighter .line.alt2 {
     background-color: #222 !important;
 }
+
+
+
+
+
+
+.imagenes .scroll_hide{
+	overflow-x:auto;
+}
+
+.imagenes .scroller{
+	height: 90%;
+	overflow:visible;
+    white-space: nowrap;
+    width: 100%;
+}
+.imagenes{
+	width: 100%;
+}	
+
+.imagenes > div {
+	/*float:left;*/
+	display: block;
+	height: 100%;
+}
+.imagenes .imagen_grande {
+	height:70%;
+	text-align: center;
+}
+.imagenes .imagen_grande img {
+	/*max-width: 935px;*/
+	width:auto;
+	height: 298px;
+}
+
+.imagenes .imagenes_chicas {
+	height: 30%;
+}	
+
+.imagenes .imagenes_chicas img {
+	width: 130px;
+	/*margin-bottom:9px;*/
+	margin:5px;
+}
+
+.imagenes_grandes{
+	display: none;
+}
+
+
+
+
+
+
+.eventos .evento {}

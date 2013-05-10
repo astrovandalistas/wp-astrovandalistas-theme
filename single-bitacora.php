@@ -21,21 +21,7 @@ get_header();
  	$contenido = get_the_content();
  	$contenido = filter($contenido,'content');
 
-
-	$bloques = get_group('bloque');
-	$codigo = $descripcion = 0;
-	
-	// var_dump($bloques);
-	foreach($bloques as $bloque){
-		$codigo = $bloque['bloque_codigo'][1];
-		$codigo = '<pre class="brush: php">'.$codigo.'</pre>' ;
-		$codigo = makeDiv( "", "bloque_codigo", $codigo );
-
-		$descripcion = $bloque['bloque_descripcion'][1];
-		$descripcion = makeDiv( "", "bloque_descripcion", $descripcion );
-
-		$bloques_codigo .= makeDiv( "", "bloque", $descripcion.$codigo );
-	}
+ 	$imagen = makeImg(timThumb(featImg(),750,300));
 
  	$terms = get_the_terms($post->ID,'proyectos');
 	if ( $terms && ! is_wp_error( $terms ) ) { 
@@ -75,15 +61,14 @@ get_header();
 
 
 	$titulo = makeDiv("","titulo",'<h2>'.$titulo.'</h2>');
- 	$lateral = makeDiv("","lateral fourcol",$madre.$menu);
- 	$codigo = makeDiv("","codigo",$bloques_codigo);
- 	$contenido = makeDiv("","contenido",$contenido.$codigo);
+ 	$lateral = makeDiv("","lateral fourcol",$madre.$menu); 	
+ 	$contenido = makeDiv("","contenido",$imagen.$contenido.$bitacora);
  	$principal = makeDiv("","eightcol last",$titulo.$contenido);
 
  	$echo .= makeDiv("","header twelvecol row",$lateral.$principal); 
  	
 
- 	echo makeDiv("codigo","post",$echo);
+ 	echo makeDiv("bitacora","post",$echo);
 
 endwhile; // end of the loop.
 

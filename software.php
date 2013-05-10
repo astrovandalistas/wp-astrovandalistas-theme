@@ -9,11 +9,32 @@ if ( have_posts() ) while ( have_posts() ) : the_post();
 
 $paginaMadre = $post->post_parent;
 
+$slugMadre = get_post($paginaMadre)->post_name;
+$tituloMadre = get_post($paginaMadre)->post_title;
+// $imagenMadre = featImg("medium",$paginaMadre);		
+// $imagenMadre = makeImg(timThumb($imagenMadre,350,100));
+// $linkMadre = get_permalink();	
 
-$tituloMadre = get_post($paginaMadre)->post_name;
-$titulo = get_post($paginaMadre)->post_title;
+ 	
+$args = array(
+	'post_type' => 'proyecto',
+	'name' => $slugMadre
+);
 
+$proyecto = new WP_Query($args);
 
+while ( $proyecto->have_posts() ) :
+	$proyecto->the_post();
+	$tituloMadre = makeDiv("","titulo",filter( get_the_title(), 'title' ));
+	$imagenMadre = featImg();		
+	$imagenMadre = makeImg(timThumb($imagenMadre,350,100));
+	$linkMadre = get_permalink();	
+
+	$madre = makeDiv("","madre",$imagenMadre.$tituloMadre,$linkMadre);
+
+endwhile;	
+
+// $madre = makeDiv("","madre",$imagenMadre.$tituloMadre,$linkMadre);
 
 
 	$subPaginas = get_pages( array ( 'parent' => $paginaMadre, 'child_of' => $paginaMadre ) );
@@ -39,7 +60,7 @@ $args = array(
 		array(
 			'taxonomy' => 'proyectos',
 			'field' => 'slug',			
-			'terms' => $tituloMadre
+			'terms' => $slugMadre
 		)
 	)
 );
@@ -50,21 +71,19 @@ $query = new WP_Query($args);
 
 while ($query->have_posts()) : $query->the_post(); 	
 	$titulo = filter( get_the_title(), 'title' );
-	$contenido = filter( get_the_content(), 'content' );
-	$imagen = wp_get_attachment_image_src( get_post_thumbnail_id(), 'large');
-	$imagen = makeImg($imagen[0]);
+	$extracto = filter( get_the_excerpt(), 'excerpt' );
+	$imagen = featImg('medium');
+	$imagen = makeImg(timThumb($imagen,200,200 ));	
 	$link = get_permalink($post->ID);
 	$codigo .= makeDiv("","entrada",
-		makeDiv("","img ".$clase,$imagen,$link)
-		.
 		makeDiv("","titulo",$titulo,$link)
 		.
-		makeDiv("","cntd",$contenido,$link)
+		makeDiv("","img ".$clase,$imagen,$link)
+		.
+		makeDiv("","extracto",$extracto,$link)
 	);
 
 endwhile;
-
-
 
 
 
@@ -81,12 +100,12 @@ endwhile;
  	$imagen = makeImg($imagen[0][0]);
 
 
- 	$lateral = makeDiv("","lateral fourcol",$titulo.$menu);
+ 	$lateral = makeDiv("","lateral fourcol",$madre.$menu);
  	$codigo = makeDiv("","eightcol last",$codigo);
 
  	$echo .= makeDiv("","header twelvecol row",$lateral.$codigo); 
 
- 	echo makeDiv("codigo","",$echo);
+ 	echo makeDiv("software","posts",$echo);
 
 
 get_sidebar();
