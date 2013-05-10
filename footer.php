@@ -15,7 +15,7 @@
 				<div id="footer" class="row">
 					<div class="twelvecol last">
 
-						<?php  echo makeLink(makeImg(themeDir().'/imagenes/copyleft.png'),"http://github.com/astrovandalitas.cc"); ?>  astrovandalistas* 2013
+						<?php  echo makeLink(makeImg(themeDir().'/imagenes/copyleft.png'),"https://github.com/astrovandalistas/astrovandalistas.cc"); ?>  astrovandalistas* 2013
 						
 					</div>
 				</div>
