@@ -1,0 +1,310 @@
+/*
+Theme Name:  Astrovandalistas*
+Description: Wordpress Theme
+Author: furenku & microhom
+Author URI: http://www.foostoodio.com
+Theme URI: github.... proximamente
+License: GNU General Public License version 3.0
+License URI: http://www.gnu.org/licenses/gpl-3.0.html
+Version: 0.1
+
+Template: 1140FluidStarkers
+
+*/
+
+body{
+	background-color: #000;
+	font-family: Arial, Helvetica, sans-serif;
+	color: #fff;
+}
+
+a{
+	color:#aaa;
+	text-decoration: none;
+}
+
+ul { width: 100%; height: 100%; }
+
+.text_table{
+	width:100%;
+	height:100%;
+	display: table;
+	vertical-align: middle;
+}
+
+.text_container{
+	text-align: justify;
+	display: table-cell;
+	vertical-align: middle;
+	padding: 0 5px;
+}
+.vcenter_text{
+	width: 100%;
+	height: 100%;
+	display: table-cell;
+	display: inline-block;
+	vertical-align: middle;
+}
+
+
+
+
+
+
+/*div { position: relative; }*/
+#logo {
+	font-size: 18px;
+
+}
+#logo div {
+}
+
+#logo .logoDiv {
+	height: 100%;
+	/*position: relative;*/
+}
+
+#logo .logoDiv div{
+	height: 30%;
+	width: 100%;
+	text-align: center;
+}
+#logo .logoDiv > div> img {
+	height: 100%;
+}
+
+#header {
+	height: 150px;
+	border-bottom: 1px solid #334;
+}
+#footer {
+	height: 150px;
+	border-top: 1px solid #334;
+	padding: 20px;
+	text-align: right;
+}	
+#header > div{
+	/*margin-top: 80px;*/
+	/*float: bottom;*/
+	/*margin-top: 60%;*/
+	display: inline-block;
+	height: 100%;
+
+}
+
+#header div{
+	/*height: 100%;*/
+}
+
+#footer {
+	position: relative;
+}
+
+#footer div{
+	/*text-align: center;*/
+}
+
+#menu div {
+	text-align: center;
+}
+#menu{
+	height: 20px;
+	margin-top: 60px;
+}
+#menu .menudiv {
+	display: inline-block;
+	width:100px;
+	height: 40px;
+}
+
+.text_table{
+	width:100%;
+	height:100%;
+	display: table;
+	vertical-align: middle;
+}
+
+.text_container{
+	text-align: justify;
+	display: table-cell;
+	vertical-align: middle;
+	padding: 0 5px;
+}
+.vcenter_text{
+	width: 100%;
+	height: 100%;
+	display: table-cell;
+	display: inline-block;
+	vertical-align: middle;
+}
+
+
+#contenido {
+height: auto;
+}
+
+#contenido > div {
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+#contenido div div {
+
+/*border: 5px solid #222;
+border-radius: 5px;
+*//*	min-height: 150px;
+	height: auto;
+	background-color: #333;*/
+}
+
+/*ESTILOS GENERALES*/
+
+.titulo { 
+	height: auto !important;
+	font-size: 20px;
+	/*text-transform: uppercase;*/
+	line-height: 25px;
+	background-color: #fff;
+	color:#000;
+	padding: 0 1.25%;
+	width: 87.5%;
+}
+
+
+.current-menu-item {
+	background-color: #fff;
+}
+.current-menu-item a {
+	color: black;
+}
+
+
+
+/* INICIO */
+
+
+#proceso {
+	position: relative;
+}
+
+#proceso img {
+	width:100%;
+}
+
+#proceso .titulo {
+	position: absolute;
+	margin-top: 100px;
+	
+	width: 80%;
+	margin-left: 10%;
+	font-size: 55px;
+	line-height: 85px;
+}
+
+#proceso .en_proceso{
+	font-size:27px;
+	width: auto;
+	line-height: 37px;
+	position: absolute;
+	margin: 0;
+	text-align: left;
+}
+
+/* PROYECTOS */
+
+#intro_proceso{}
+
+#intro_proceso #intro {
+	font-size: 18px;
+}
+
+
+#proyectos {
+	height: 100%;
+}
+
+
+#proyectos .proyecto{
+	/*display: inline-block;*/
+	width: 45%;
+	margin:10px;
+	float: left;
+
+}
+#proyectos .proyecto>div{
+	display: inline-block;
+	width: 100%;
+	margin:10px 0;
+	width: 90%;
+	margin: 10px 5%;
+}
+#proyectos .proyecto img { width:100%; height:auto; }
+
+
+#proyecto .header {
+	padding-bottom: 20px; 
+	border-bottom: 1px solid #334;
+}
+
+#proyecto .contenido {
+	padding: 20px 0; 	
+}
+
+
+#proyectos .proyecto .uno { height: 150px;}
+#proyectos .proyecto .dos { height: 300px;}
+#proyectos .proyecto .tres { height: 450px;}
+
+.proyecto{}
+
+
+
+/* proyecto */
+
+
+#proyecto .lateral
+
+
+
+/* BITACORA */
+
+#bitacora {
+
+}
+
+#bitacora .entrada {
+	
+}
+
+#bitacora .entrada img {
+	width: 100%;
+	height: auto;
+}
+
+
+
+/* CODIGO */
+
+#codigo .contenido { }
+
+
+#codigo .bloque {
+	margin: 20px 0;
+	font-size: 14px;	
+}
+#codigo .bloque_codigo > div > div {
+    display: inline-block;
+    left: 0;
+    position: absolute;
+    z-index: 100;
+}
+
+
+
+.syntaxhighlighter .line.alt1 {
+    background-color: #000000 !important;
+}
+
+
+.syntaxhighlighter .line.alt2 {
+    background-color: #222 !important;
+}
